@@ -1,0 +1,193 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AudioSense - Profile</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Page-specific styles for modern profile UI */
+    #profile-card {
+      max-width: 500px;
+      margin: 0 auto;
+      text-align: center;
+      position: relative;
+      animation: float 3s ease-in-out infinite; /* Subtle floating animation */
+    }
+    @keyframes float {
+      0%, 100% { transform: translateY(0px); }
+      50% { transform: translateY(-10px); }
+    }
+    .avatar {
+      width: 100px;
+      height: 100px;
+      border-radius: 50%;
+      background: linear-gradient(45deg, var(--accent-color), #ff00ff); /* Gradient glow ring */
+      margin: 0 auto 1rem;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 2rem;
+      font-weight: bold;
+      color: var(--bg-color);
+      box-shadow: 0 0 20px var(--glow-color), inset 0 0 20px rgba(255, 255, 255, 0.1);
+      transition: var(--transition);
+    }
+    .avatar:hover {
+      box-shadow: 0 0 30px var(--glow-color), inset 0 0 30px rgba(255, 255, 255, 0.2);
+      transform: scale(1.05);
+    }
+    .username-container {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      gap: 0.5rem;
+      margin-bottom: 1rem;
+    }
+    #display-name {
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      text-shadow: 0 0 10px var(--glow-color);
+      transition: var(--transition);
+    }
+    #edit-icon {
+      cursor: pointer;
+      color: var(--accent-color);
+      font-size: 1.2rem;
+      transition: var(--transition);
+    }
+    #edit-icon:hover {
+      color: #ff00ff;
+      text-shadow: 0 0 10px #ff00ff;
+    }
+    #username-input {
+      display: none; /* Hidden by default */
+      width: 200px;
+      padding: 0.5rem;
+      border: 1px solid var(--glass-border);
+      border-radius: 5px;
+      background: var(--glass-bg);
+      color: var(--text-color);
+      text-align: center;
+      font-size: 1.2rem;
+      margin-bottom: 1rem;
+    }
+    #save-btn {
+      display: none; /* Hidden by default */
+      background: var(--accent-color);
+      color: var(--bg-color);
+      border: none;
+      padding: 0.5rem 1rem;
+      border-radius: 5px;
+      cursor: pointer;
+      transition: var(--transition);
+    }
+    #save-btn:hover {
+      box-shadow: 0 0 10px var(--glow-color);
+    }
+    .info-cards {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      justify-content: center;
+      margin-top: 2rem;
+    }
+    .info-card {
+      background: var(--glass-bg);
+      backdrop-filter: blur(10px);
+      border: 1px solid var(--glass-border);
+      border-radius: 10px;
+      padding: 1rem;
+      min-width: 120px;
+      text-align: center;
+      transition: var(--transition);
+      box-shadow: var(--shadow);
+    }
+    .info-card:hover {
+      box-shadow: 0 0 20px var(--glow-color);
+      transform: translateY(-5px);
+    }
+    .info-card h4 {
+      margin-bottom: 0.5rem;
+      color: var(--accent-color);
+    }
+    .info-card p {
+      color: var(--text-color);
+    }
+    /* Mobile adjustments */
+    @media (max-width: 768px) {
+      .info-cards {
+        flex-direction: column;
+        align-items: center;
+      }
+      .avatar {
+        width: 80px;
+        height: 80px;
+        font-size: 1.5rem;
+      }
+    }
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">AudioSense</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="analyzer.html">Analyzer</a></li>
+        <li><a href="controls.html">Controls</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="analyzer.html">Analyzer</a>
+        <a href="controls.html">Controls</a>
+        <a href="about.html">About</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </nav>
+    <button id="dark-mode-toggle">Light Mode</button>
+  </header>
+
+  <main>
+    <section class="glass" id="profile-card">
+      <div class="avatar" id="avatar">A</div> <!-- Placeholder avatar with initial -->
+      <div class="username-container">
+        <span id="display-name">Anonymous</span>
+        <span id="edit-icon" title="Edit Username">✏️</span>
+      </div>
+      <input type="text" id="username-input" placeholder="Enter username" maxlength="20">
+      <button id="save-btn">Save</button>
+      
+      <div class="info-cards">
+        <div class="info-card">
+          <h4>App Name</h4>
+          <p>AudioSense</p>
+        </div>
+        <div class="info-card">
+          <h4>Theme</h4>
+          <p id="theme-display">Dark</p>
+        </div>
+        <div class="info-card">
+          <h4>Version</h4>
+          <p>1.0</p>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 AudioSense. Built with pure HTML, CSS, and JS.</p>
+  </footer>
+
+  <script src="common.js"></script>
+  <script src="profile.js"></script>
+</body>
+</html>
