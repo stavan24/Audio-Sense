@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AudioSense - Controls</title>
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* Page-specific styles for controls (extends shared styles.css) */
+    .slider-container {
+      margin: 2rem 0;
+      position: relative;
+    }
+    .slider {
+      width: 100%;
+      max-width: 600px;
+      -webkit-appearance: none;
+      appearance: none;
+      height: 10px;
+      background: var(--glass-bg);
+      border-radius: 5px;
+      outline: none;
+      transition: var(--transition);
+    }
+    .slider::-webkit-slider-thumb {
+      -webkit-appearance: none;
+      appearance: none;
+      width: 20px;
+      height: 20px;
+      background: var(--accent-color);
+      border-radius: 50%;
+      cursor: pointer;
+      box-shadow: 0 0 10px var(--glow-color);
+      transition: var(--transition);
+    }
+    .slider::-webkit-slider-thumb:hover {
+      box-shadow: 0 0 20px var(--glow-color);
+    }
+    .display {
+      font-family: 'Courier New', monospace; /* Digital-style font */
+      font-size: 1.5rem;
+      font-weight: bold;
+      color: var(--accent-color);
+      text-shadow: 0 0 10px var(--glow-color);
+      margin-top: 0.5rem;
+      transition: var(--transition);
+    }
+    .labels {
+      display: flex;
+      justify-content: space-between;
+      margin-top: 0.5rem;
+      font-size: 0.9rem;
+      color: var(--text-color);
+    }
+    /* Glow classes for frequency ranges */
+    .bass-glow { box-shadow: 0 0 20px #ff00ff, 0 0 40px #ff00ff; } /* Purple for Bass */
+    .mid-glow { box-shadow: 0 0 20px var(--glow-color), 0 0 40px var(--glow-color); } /* Cyan for Mid */
+    .treble-glow { box-shadow: 0 0 20px #00ff00, 0 0 40px #00ff00; } /* Green for Treble */
+    /* Warning glow for high dB */
+    .warning-glow { box-shadow: 0 0 20px #ff0000, 0 0 40px #ff0000; } /* Red warning */
+  </style>
+</head>
+<body>
+  <header>
+    <div class="logo">AudioSense</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="analyzer.html">Analyzer</a></li>
+        <li><a href="controls.html">Controls</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="analyzer.html">Analyzer</a>
+        <a href="controls.html">Controls</a>
+        <a href="about.html">About</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </nav>
+    <button id="dark-mode-toggle">Light Mode</button>
+  </header>
+
+  <main>
+    <section class="glass" id="control-panel">
+      <h1>Frequency & Loudness Control</h1>
+      <p>Simulate and control sound parameters manually. Adjust sliders to change frequency and volume, then start the sound.</p>
+      
+      <!-- Frequency Slider -->
+      <div class="slider-container">
+        <h3>Frequency (Hz)</h3>
+        <input type="range" id="freq-slider" class="slider" min="20" max="20000" value="440" step="1">
+        <div class="display" id="freq-display">440 Hz</div>
+        <div class="labels">
+          <span>Bass (&lt;300Hz)</span>
+          <span>Mid (300-4000Hz)</span>
+          <span>Treble (&gt;4000Hz)</span>
+        </div>
+      </div>
+      
+      <!-- Loudness Slider -->
+      <div class="slider-container">
+        <h3>Loudness (dB)</h3>
+        <input type="range" id="db-slider" class="slider" min="0" max="120" value="50" step="1">
+        <div class="display" id="db-display">50 dB</div>
+        <div class="labels">
+          <span>Silent (0dB)</span>
+          <span>Normal (50-85dB)</span>
+          <span>Loud (&gt;85dB)</span>
+        </div>
+      </div>
+      
+      <!-- Start/Stop Button -->
+      <div id="controls" style="text-align: center; margin-top: 2rem;">
+        <button id="start-stop-btn">Start Sound</button>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 AudioSense. Built with pure HTML, CSS, and JS.</p>
+  </footer>
+
+  <script src="common.js"></script>
+  <script src="controls.js"></script>
+</body>
+</html>

@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>AudioSense - Analyzer</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <header>
+    <div class="logo">AudioSense</div>
+    <nav>
+      <ul>
+        <li><a href="index.html">Home</a></li>
+        <li><a href="analyzer.html">Analyzer</a></li>
+        <li><a href="controls.html">Controls</a></li>
+        <li><a href="about.html">About</a></li>
+        <li><a href="profile.html">Profile</a></li>
+      </ul>
+      <div class="hamburger">
+        <div></div>
+        <div></div>
+        <div></div>
+      </div>
+      <nav class="mobile-menu">
+        <a href="index.html">Home</a>
+        <a href="analyzer.html">Analyzer</a>
+        <a href="controls.html">Controls</a>
+        <a href="about.html">About</a>
+        <a href="profile.html">Profile</a>
+      </nav>
+    </nav>
+    <button id="dark-mode-toggle">Light Mode</button>
+  </header>
+
+  <main>
+    <section class="glass" id="analyzer-container">
+      <h1>Sound Analyzer</h1>
+      <p>Click "Start Microphone" to begin real-time analysis. Allow microphone access when prompted.</p>
+      <div id="controls">
+        <button id="start-stop-btn">Start Microphone</button>
+      </div>
+      <div>
+        <h3>Live Frequency</h3>
+        <p id="frequency-display">0 Hz</p>
+      </div>
+      <div>
+        <h3>Approximate Loudness</h3>
+        <p id="db-display">0 dB</p>
+      </div>
+      <div>
+        <h3>Frequency Slider (20Hz - 20kHz)</h3>
+        <div id="frequency-slider">
+          <div id="slider-indicator"></div>
+        </div>
+      </div>
+      <div>
+        <h3>Real-Time Visualization</h3>
+        <div id="visualization"></div>
+      </div>
+    </section>
+  </main>
+
+  <footer>
+    <p>&copy; 2023 AudioSense. Built with pure HTML, CSS, and JS.</p>
+  </footer>
+
+  <script src="common.js"></script>
+  <script src="analyzer.js"></script>
+</body>
+</html>
